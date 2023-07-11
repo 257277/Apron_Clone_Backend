@@ -18,17 +18,17 @@ userRouter.post("/login", async (req, res) => {
                     res.send({ "msg": "Login Successfull", "token": token });
                 }
                 else {
-                    res.send("Wrong Credential");
+                    res.send({ "msg": "Wrong Credential" });
                 }
             });
 
         }
         else {
-            res.send("Wrong Credential");
+            res.send({ "msg": "Wrong Credential" });
         }
     }
     catch (err) {
-        res.send("Wrong Credential");
+        res.send({ "msg": "Wrong Credential" });
     }
 })
 
@@ -42,16 +42,16 @@ userRouter.post("/register", async (req, res) => {
         try {
 
             await UserModel.insertMany(data);
-            res.send("Registration completed!");
+            res.send({ "message": "Registration completed!" });
         }
         catch (err) {
             console.log(err);
-            res.send("Something went wrong");
+            res.send({ "message": "Something went wrong" });
         }
     }
     else {
 
-        res.send("Already Registered!");
+        res.send({ "message": "Already Registered!" });
     }
 
 })
